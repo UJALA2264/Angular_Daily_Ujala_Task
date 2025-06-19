@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-4">
+        One Way Data Binding .ts to .html
+    </div>
+    <div class="col-4"></div>
+    <div class="col-4"></div>
+
+</div>
+<div class="row">
+    <div class="col-4">
+        <div class="row">
+            <div class="col-4 bg-success">
+                interpolation
+                <h4>{{CourseName}}</h4>
+                <h4>{{inputType}}</h4>
+                <input type="text" value="{{CourseName}}" placeholder="Enter Text"/>
+                <input type="{{inputType}}"/>
+
+            </div>
+            <div class="col-4">
+                Property Binding
+                <div [class]="myclassname">Danger</div>
+                <input type="text" [value]="CourseName"/>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <button class="btn btn-success" (click)="showAlert('Welcome alert box')">Show Welcome</button>
+        <span (click)="showAlert('here Span Tag')">Click Me</span>
+        <button class="btn btn-success" (click)="ChangeCourse()">Change Course</button>
+
+    </div>
+    <div class="col-6">
+        <input type="text" [(ngModel)]="CourseName" />- {{CourseName}}
+        <input type="checkbox" [(ngModel)]="isindian"/>
+        <select [(ngModel)]="stateName">
+            <option value="">--Select--</option>
+            <option value="Maharastra">Maharastra</option>
+            <option value="Pune">Pune</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Punjab">Punjab</option>
+
+        </select>
+    
+    </div>
+<div class="col-6">
+    <h2>{{firstName()}}</h2>
+</div>
+</div>
