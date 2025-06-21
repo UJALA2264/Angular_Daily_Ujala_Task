@@ -1,36 +1,36 @@
 <div class="mt-2 p-2 bg-secondary text-white rounded">
-    <h1>Structrual Directive</h1>
-    <p>*ngIf, *ngFor...</p>
+    <h1>Attribute Directive</h1>
+    <p>*ngclass, *ngStyle...</p>
 </div>
 <div class="row pt-3">
     <div class="col-3">
-        <div *ngIf="isdev11visible" class="bg-danger p-3 text-center">
+        <div  class=" p-3 text-center" [ngClass]="div1Color">
             <h4>Div-11</h4>
         </div>
     </div>
     <div class="col-3">
-        <div *ngIf="isdiv2visible" class="bg-success p-3 text-center">
+        <div  class="p-3 text-center" [ngClass]="IsActivetoggle==true ?'bg-success':'bg-warning' ">
             <h4>Div-45</h4>
         </div>
     </div>
     <div class="col-3">
-        <div *ngIf="num1==num2" class="bg-secondary p-3 text-center">
+        <div  class="bg-secondary p-3 text-center" [ngClass]="num1==num2 ? 'bg-danger text-white' : 'bg-warning text-black' ">
             <h4>Div-3</h4>
         </div>
     </div>
     <div class="col-3">
-        <div *ngIf="selectedstate=='USA'" class="bg-primary p-3 text-center">
+        <div class=" p-3 text-center" [ngClass]="IsActive? 'bg-primary': '' ">
             <h4>Div-2</h4>
         </div>
     </div>
 <div class="row pt-3">
     <div class="col-3 text-center">
-        <button class="btn btn-danger" (click)="Hidediv11()">Hide</button>
-        <button class="btn btn-primary mx-2" (click)="showdiv11()">Show</button>
+        <button class="btn btn-danger" (click)="AddRed()" >Add Red</button>
+        <button class="btn btn-primary mx-2" (click)="AddBlue()">Add Blue</button>
 
     </div>
      <div class="col-3 text-center">
-        <button class="btn btn-success" (click)="togglebutton()">Toggle</button>
+        <button class="btn btn-success" (click)="Togglechange()">Toggle</button>
 
     </div>
      <div class="col-3">
@@ -42,8 +42,8 @@
      </div>
      <div class="col-3">
         <div  class="display:flex;align-items:center;">
-            <input [(ngModel)]="Isactive" type="checkbox"  class="width-50">
-            <select [(ngModel)]="selectedstate">
+            <input [(ngModel)]="IsActive" type="checkbox"  class="width-50">
+            <select >
                 <option value="">-Select-</option>
                 <option value="India">India</option>
                 <option value="USA">USA</option>
@@ -55,22 +55,15 @@
 
 <div class="row">
     <div class="col-3">
-        <ul>
-            <li *ngFor="let city of cityArray">{{city}}</li>
-        </ul>
+       
     </div>
     <div class="col-3">
-        <div *ngFor="let cityName of cityArray">{{cityName}}</div>
     </div>
     <div class="col-3">
-        <select>
-            <option *ngFor="let city of cityArray">{{city}}</option>
-        </select>
+       
     </div>
     <div class="col-3">
-        <select>
-            <option *ngFor="let stu of studentList" [value]="stu.Id">{{stu.name}}</option>
-        </select>
+       
     </div>
 </div>
 <div class="row">
@@ -81,7 +74,11 @@
                     <th>Sr.No</th>
                     <th>Name</th>
                     <th>City</th>
+                    <th>Gender</th>
+
                     <th>IsActive</th>
+                                        <th>Total Marks</th>
+
 
                 </tr>
             </thead>
@@ -90,17 +87,29 @@
                     <td>{{srno+1}}</td>
                     <td>{{stu.name}}</td>
                     <td>{{stu.city}}</td>
-                    <td>
-                        <span *ngIf="stu.Active">Active</span>
-                        <span *ngIf="!stu.Active">De-Active</span>
-
+                    <td>{{stu.gender}}</td>
+                    <td [ngStyle]="{'background-color':stu.Active ? 'Yellow' : 'Red'}">
+                        <span>{{stu.Active ? 'Active' : 'DeActive'}}</span>
                     </td>
-                   
+                    <td>
+                        <div class="progress">
+                            <div class="progress-bar" [ngStyle]="{'width':stu.Marks + '%'}">   {{stu.Marks}}</div>
+
+                        </div>
+                     
+                    </td>
+
 
                 </tr>
             </tbody>
         </table>
     </div>
+    <div class="col-5">
+    <div [ngStyle]="CustomerStyle">
+        ObjectDiv
+
+    </div>
+</div>
 </div>
 
 </div>
